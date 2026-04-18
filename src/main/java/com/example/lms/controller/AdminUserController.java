@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/api/admin")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin
 @RequiredArgsConstructor
 public class AdminUserController {
 
