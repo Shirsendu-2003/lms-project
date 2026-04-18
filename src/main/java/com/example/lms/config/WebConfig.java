@@ -14,11 +14,14 @@ public class WebConfig implements WebMvcConfigurer {
                 .addResourceLocations("file:C:/lms/uploads/medical/"); // <-- FIXED PATH
     }
 
-    @Override
+   @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:3000")
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowedOrigins(
+                        "http://localhost:3000",
+                       "https://lms-frontend-kappa-fawn.vercel.app"
+                )
+                .allowedMethods("*")
                 .allowedHeaders("*")
                 .exposedHeaders("Authorization")
                 .allowCredentials(true);
