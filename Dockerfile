@@ -5,7 +5,7 @@ FROM maven:3.9.9-eclipse-temurin-17 AS build
 
 WORKDIR /app
 
-# Copy only pom first (for caching dependencies)
+# Copy pom.xml first (better caching)
 COPY pom.xml .
 RUN mvn dependency:go-offline
 
@@ -26,8 +26,10 @@ WORKDIR /app
 # Copy jar from build stage
 COPY --from=build /app/target/*.jar app.jar
 
-# Expose port (Render uses dynamic port)
+# Render dynamic port support
+ENV PORT=8080
+
 EXPOSE 8080
 
-# Run application
-ENTRYPOINT ["java","-jar","app.jar"]
+# 🔥 IMPORTANT FIX
+ENTRYPOINT ["sh", "-c", "java -jar app.jar --server.port=$PORT"]
