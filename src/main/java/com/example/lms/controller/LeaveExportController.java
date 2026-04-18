@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/leave")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:3000")   // <-- Add if frontend needs access
+@CrossOrigin  // <-- Add if frontend needs access
 public class LeaveExportController {
 
     private final LeaveExportService leaveExportService;
