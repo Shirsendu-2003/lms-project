@@ -12,7 +12,7 @@ import java.nio.file.*;
 
 @RestController
 @RequestMapping("/api/files")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin
 public class FilesController {
 
     private final Path medicalUploadDir = Paths.get("C:/lms/uploads/medical");
